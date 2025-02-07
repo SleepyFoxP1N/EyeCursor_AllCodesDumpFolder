@@ -1,103 +1,106 @@
-Prework:
+Timeline of making it work in android studio
 
-Install Homebrew.
-Install Xcode and its Command Line Tools by xcode-select --install.
-Install Bazelisk.
+Requirements:
+- [ ] python3.7
+- [ ] bazel5.2.0? / latest bazel   # ADDING PYTHON TO VARIABLE ENVIRONMENT
+| echo 'export PATH=/usr/local/opt/python@3.7/libexec/bin:$PATH' >> ~/.zprofile
+source ~/.zprofile
+# For bash use ~/.bash_profile.
 
-Follow the official Bazel documentation to install Bazelisk.
-
-Checkout MediaPipe repository.
-
-
-$ git clone --depth 1 https://github.com/google/mediapipe.git
-
-$ cd mediapipe
-Install OpenCV and FFmpeg.
-
-Option 1. Use HomeBrew package manager tool to install the pre-compiled OpenCV 3 libraries. FFmpeg will be installed via OpenCV.
-
-
-$ brew install opencv@3
-
-# There is a known issue caused by the glog dependency. Uninstall glog.
-$ brew uninstall --ignore-dependencies glog
-Option 2. Use MacPorts package manager tool to install the OpenCV libraries.
+# SETTING BAZEL 5.2.0 | export BAZEL_VERSION=5.2.0
+curl -fLO "https://github.com/bazelbuild/bazel/releases/download/5.2.0/bazel-5.2.0-installer-darwin-x86_64.sh"
+chmod +x "bazel-5.2.0-installer-darwin-x86_64.sh"
+./bazel-5.2.0-installer-darwin-x86_64.sh --user
+export PATH=$PATH:$HOME/bin
+bazel --version
+bazel clean --expunge
 
 
-$ port install opencv
-Note: when using MacPorts, please edit the WORKSPACE, opencv_macos.BUILD, and ffmpeg_macos.BUILD files like the following:
+# MEDIAPIPE SETUP RESOURCE FOR SDK AND NDK |
+bash setup_android_sdk_and_ndk.sh
+|
+export ANDROID_HOME=/Users/jhroyedzon/Library/Android/sdk
+export ANDROID_NDK_HOME=/Users/jhroyedzon/Library/Android/sdk/ndk/21.4.7075529/android-ndk-r21e
+echo "android_sdk_repository(name = \"androidsdk\", path = \"/Users/jhroyedzon/Library/Android/sdk\")" >> WORKSPACE”
+echo "android_ndk_repository(name = \"androidndk\", api_level=21, path = \"/Users/jhroyedzon/Library/Android/sdk/ndk/21.4.7075529/android-ndk-r21e\”)” >> WORKSPACE”
 
-new_local_repository(
-    name = "macos_opencv",
-    build_file = "@//third_party:opencv_macos.BUILD",
-    path = "/opt",
-)
+# ADDING OPENCV |
+pip3 install opencv-python
+pip3 install opencv-python==4.1.2.30
+python3 -c "import cv2" python3 -c "import cv2; print(cv2.__version__)"
 
-new_local_repository(
-    name = "macos_ffmpeg",
-    build_file = "@//third_party:ffmpeg_macos.BUILD",
-    path = "/opt",
-)
+# ADDING PIP
+|
+python@3.7 -m pip install pip
+python3.11 -m pip install --upgrade pip
 
-cc_library(
-    name = "opencv",
-    srcs = glob(
-        [
-            "local/lib/libopencv_core.dylib",
-            "local/lib/libopencv_highgui.dylib",
-            "local/lib/libopencv_imgcodecs.dylib",
-            "local/lib/libopencv_imgproc.dylib",
-            "local/lib/libopencv_video.dylib",
-            "local/lib/libopencv_videoio.dylib",
-        ],
-    ),
-    hdrs = glob(["local/include/opencv2/**/*.h*"]),
-    includes = ["local/include/"],
-    linkstatic = 1,
-    visibility = ["//visibility:public"],
-)
+# OPENCV IDK
+|
+echo 'export PATH="/usr/local/opt/opencv@3/bin:$PATH"' >> ~/.zshrc
+export LDFLAGS="-L/usr/local/opt/opencv@3/lib"
+export CPPFLAGS="-I/usr/local/opt/opencv@3/include"
+export PKG_CONFIG_PATH="/usr/local/opt/opencv@3/lib/pkgconfig"
 
-cc_library(
-    name = "libffmpeg",
-    srcs = glob(
-        [
-            "local/lib/libav*.dylib",
-        ],
-    ),
-    hdrs = glob(["local/include/libav*/*.h"]),
-    includes = ["local/include/"],
-    linkopts = [
-        "-lavcodec",
-        "-lavformat",
-        "-lavutil",
-    ],
-    linkstatic = 1,
-    visibility = ["//visibility:public"],
-)
-Make sure that Python 3 and the Python "six" library are installed.
+# FOR ADB
+|
+export ANDROID_HOME=/Users/aanshu/Library/Android/sdk/platform-tools/adb
+export PATH=$ANDROID_HOME/platform-tools:$PATH
+export PATH=$ANDROID_HOME/tools:$PATH
+export PATH=$ANDROID_HOME/tools/bin:$PATH
 
 
-$ brew install python
-$ sudo ln -s -f /usr/local/bin/python3.7 /usr/local/bin/python
-$ python --version
-Python 3.7.4
-$ pip3 install --user six
-Run the Hello World! in C++ example.
+# REMOVE BAZEL |
+rm $HOME/.cache/bazel
+sudo rm /usr/local/bin/bazel /etc/bazelrc /usr/local/lib/bazel
+
+# REMOVE HOMEBREW
+|
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/uninstall.sh)"
+
+# REMOVE XCODE
+| Step #1: Launch “Finder.”
+1. Step #2: Click on the “Go” menu and then open “Go to folder.”
+2. Step #3: Enter the following path,
+3. ~/Library/Developer/
+4. Step #4: Search for the “Developer” folder and remove it.
 
 
-$ export GLOG_logtostderr=1
-# Need bazel flag 'MEDIAPIPE_DISABLE_GPU=1' as desktop GPU is currently not supported
-$ bazel run --define MEDIAPIPE_DISABLE_GPU=1 \
-    mediapipe/examples/desktop/hello_world:hello_world
+After 14 days of reattempting to compile the HelloWorld.cc of mediapipe now recording the attempts
 
-# Should print:
-# Hello World!
-# Hello World!
-# Hello World!
-# Hello World!
-# Hello World!
-# Hello World!
-# Hello World!
-# Hello World!
-# Hello World!
-# Hello World!
+// WED MAR 1 2023
+
+Attempt 1.1:
+- [ ] Step 1: Follow the instructions except the installing for python, opencv, and bazel. 
+- [ ] Step 1.5: Imported bazel project through android studio
+- [ ] Step 2: User sdk and ndk of android studio
+- [ ] Step 3: Error regarding fetching, use “bazel clean --expunge”
+- [ ] Compiled successfully but is not printing. 1 warning only (warning: 'sprintf' is deprecated)
+- [ ] Resources: python@3.10 and @3.7 are installed. Used pip3 install opencv-python which is version 4.7.0 . Bazel version is 5.4.0 but bazelisk is installed. Mediapipe WORKSPACE has the same syntax when “bash setup_android_sdk_and_ndk.sh” is used but the pathing is directed to android studio jdk and ndk.
+
+// THU MAR 2 2023
+
+Attempt 1.2: CHANGING OPENCV 
+- [ ] Step 1: Reworking with attempt 1. 
+- [ ] Step 2: changing “pip3 uninstall opencv-python” to opencv@3.
+- [ ] Step 3: Output is same with attempt 1
+
+Attempt 1.3:  CHANGING MEDIAPIE (I used android studio and import a bazel project to mediapipe in attempt 1)
+- [ ] Step 1: Reworking with attempt 2.
+- [ ] Step 2: Recloning mediapipe.
+- [ ] Step 3: Use pre setupt jdk and sdk in mediapie
+- [ ] Step 4: Still the same output with attempt 1
+
+Attempt 1.4: Use bazel 6.0.0 
+- [ ] Step 1: Reworking with attempt 3.
+- [ ] Step 2: Removing all bazels.
+- [ ] Step 3: Install bazel using brew.
+- [ ] Step 4: export GLOG_logtostderr=1 ——> THIS FIXES THE PROBLEM
+- [ ] ERROR: The project you're trying to build requires Bazel 5.2.0
+- [ ] Step 5: Chaging to Bazel 5.2.0
+- [ ] Compiled successfully with the same one warning, YES! Printed “Hello World”!!!!!
+- [ ] Rsources: Python 3.7.16 —— pip 22.3.1 —— bazel 5.2.0 —— “bash setup_android_sdk_and_ndk.sh” —— opencv@3 —— do export GLOG_logtostderr=1
+
+
+
+
+
