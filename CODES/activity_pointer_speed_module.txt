@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background">
+    <androidx.cardview.widget.CardView
+        app:cardCornerRadius="30dp"
+        app:cardElevation="0dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@drawable/background"
+        android:id="@+id/mainLayout">
+    <Button
+        android:id="@+id/speedbackbutton"
+        android:layout_width="80dp"
+        android:layout_height="73dp"
+        android:background="@drawable/transparentbutton"
+        android:text="←"
+        android:textAllCaps="false"
+        android:textColor="@color/black"
+        android:textSize="55sp"
+        android:textStyle="bold"
+        tools:ignore="HardcodedText,TextSizeCheck" />
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="Cursor Speed"
+        android:textColor="@color/black"
+        android:textSize="33sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        tools:ignore="HardcodedText,TextSizeCheck" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="Increase or decrease the cursor moves across the screen for every pixel you move."
+        android:textColor="@color/black"
+        android:textSize="21sp"
+        android:textAlignment="center"
+        tools:ignore="HardcodedText,TextSizeCheck" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="5dp"
+            android:gravity="center">
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Horizontal Speed:"
+        android:textColor="@color/black"
+        app:autoSizeTextType="uniform"
+        app:autoSizeMinTextSize="15sp"
+        app:autoSizeMaxTextSize="20sp"
+        app:autoSizeStepGranularity="1sp"
+        android:textAlignment="textEnd"
+        android:layout_weight="1"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="s"
+                android:alpha="0"
+                android:textColor="@color/black"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                tools:ignore="HardcodedText,TextSizeCheck" />
+
+    <EditText
+        android:id="@+id/adjustSpeedValueX"
+        android:layout_width="120dp"
+        android:layout_height="60dp"
+        android:background="@drawable/save_button"
+        android:ems="2"
+        android:inputType="number"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        app:autoSizeTextType="uniform"
+        app:autoSizeMinTextSize="20sp"
+        app:autoSizeMaxTextSize="25sp"
+        app:autoSizeStepGranularity="1sp"
+        android:textStyle="bold"
+        android:layout_weight="1"
+        tools:ignore="HardcodedText,TextSizeCheck,VisualLintOverlap,SpeakableTextPresentCheck" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="s"
+                android:alpha="0"
+                android:textColor="@color/black"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                tools:ignore="HardcodedText,TextSizeCheck" />
+    <Button
+        android:id="@+id/speedAddX"
+        android:layout_width="80dp"
+        android:layout_height="60dp"
+        android:background="@drawable/save_button"
+        android:text="+"
+        android:textAllCaps="false"
+        android:textColor="@color/black"
+        app:autoSizeTextType="uniform"
+        app:autoSizeMinTextSize="20sp"
+        app:autoSizeMaxTextSize="25sp"
+        app:autoSizeStepGranularity="1sp"
+        android:textStyle="bold"
+        android:layout_weight="1"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="s"
+                android:alpha="0"
+                android:textColor="@color/black"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                tools:ignore="HardcodedText,TextSizeCheck" />
+    <Button
+        android:id="@+id/speedMinusX"
+        android:layout_width="80dp"
+        android:layout_height="60dp"
+        android:background="@drawable/save_button"
+        android:text="-"
+        android:textAllCaps="false"
+        android:textColor="@color/black"
+        app:autoSizeTextType="uniform"
+        app:autoSizeMinTextSize="20sp"
+        app:autoSizeMaxTextSize="25sp"
+        app:autoSizeStepGranularity="1sp"
+        android:textStyle="bold"
+        android:layout_weight="1" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="5dp"
+            android:gravity="center">
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Vertical Speed:"
+        android:textAlignment="textEnd"
+        android:textColor="@color/black"
+        app:autoSizeTextType="uniform"
+        app:autoSizeMinTextSize="15sp"
+        app:autoSizeMaxTextSize="20sp"
+        app:autoSizeStepGranularity="1sp"
+        android:layout_weight="1"
+        tools:ignore="HardcodedText,TextSizeCheck" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="s"
+                android:alpha="0"
+                android:textColor="@color/black"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                tools:ignore="HardcodedText,TextSizeCheck" />
+    <EditText
+        android:id="@+id/adjustSpeedValueY"
+        android:layout_width="120dp"
+        android:layout_height="60dp"
+        android:background="@drawable/save_button"
+        android:ems="2"
+        android:inputType="number"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        app:autoSizeTextType="uniform"
+        app:autoSizeMinTextSize="20sp"
+        app:autoSizeMaxTextSize="25sp"
+        app:autoSizeStepGranularity="1sp"
+        android:textStyle="bold"
+        android:layout_weight="1"
+        tools:ignore="HardcodedText,TextSizeCheck,VisualLintOverlap,SpeakableTextPresentCheck" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="s"
+                android:alpha="0"
+                android:textColor="@color/black"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                tools:ignore="HardcodedText,TextSizeCheck" />
+    <Button
+        android:id="@+id/speedAddY"
+        android:layout_width="80dp"
+        android:layout_height="60dp"
+        android:background="@drawable/save_button"
+        android:text="+"
+        android:textAllCaps="false"
+        android:textColor="@color/black"
+        app:autoSizeTextType="uniform"
+        app:autoSizeMinTextSize="20sp"
+        app:autoSizeMaxTextSize="25sp"
+        app:autoSizeStepGranularity="1sp"
+        android:textStyle="bold"
+        android:layout_weight="1" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="s"
+                android:alpha="0"
+                android:textColor="@color/black"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                tools:ignore="HardcodedText,TextSizeCheck" />
+    <Button
+        android:id="@+id/speedMinusY"
+        android:layout_width="80dp"
+        android:layout_height="60dp"
+        android:background="@drawable/save_button"
+        android:text="-"
+        android:textAllCaps="false"
+        android:textColor="@color/black"
+        app:autoSizeTextType="uniform"
+        app:autoSizeMinTextSize="20sp"
+        app:autoSizeMaxTextSize="25sp"
+        app:autoSizeStepGranularity="1sp"
+        android:textStyle="bold"
+        android:layout_weight="1"/>
+        </LinearLayout>
+    <Button
+        android:id="@+id/saveSpeedValue"
+        android:layout_width="120dp"
+        android:layout_height="48dp"
+        android:background="@drawable/save_button"
+        android:text="Save"
+        android:textAllCaps="false"
+        android:textColor="@color/blue"
+        app:autoSizeTextType="uniform"
+        app:autoSizeMinTextSize="20sp"
+        app:autoSizeMaxTextSize="25sp"
+        app:autoSizeStepGranularity="1sp"
+        android:textStyle="bold"
+        tools:ignore="HardcodedText,TextSizeCheck"
+        android:layout_gravity="end"/>
+
+    </LinearLayout>
+    </androidx.cardview.widget.CardView>
+</RelativeLayout>

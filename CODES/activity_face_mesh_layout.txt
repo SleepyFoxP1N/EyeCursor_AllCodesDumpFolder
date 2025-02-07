@@ -1,0 +1,27 @@
+﻿<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <ImageView
+        android:id="@+id/cursorTest"
+        android:layout_width="80dp"
+        android:layout_height="100dp"
+        android:background="@drawable/cursor"/>
+
+    <RelativeLayout
+        android:layout_width="139dp"
+        android:layout_height="196dp"
+        android:id="@+id/container"
+        android:background="@color/black">
+
+
+        <FrameLayout
+            android:id="@+id/preview_display_layoutTest"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"></FrameLayout>
+    </RelativeLayout>
+
+
+</FrameLayout>

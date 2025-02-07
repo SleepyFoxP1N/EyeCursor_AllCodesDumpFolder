@@ -1,0 +1,25 @@
+Prerequisite
+	Install MediaPipe Framework following these instructions.
+	Setup Java Runtime.
+	Setup Android SDK release 30.0.0 and above.
+	Setup Android NDK version between 18 and 21.
+
+MediaPipe recommends setting up Android SDK and NDK via Android Studio (and see below for Android Studio setup). However, if you prefer using MediaPipe without Android Studio, please run setup_android_sdk_and_ndk.sh to download and setup Android SDK and NDK before building any Android example apps.
+
+If Android SDK and NDK are already installed (e.g., by Android Studio), set $ANDROID_HOME and $ANDROID_NDK_HOME to point to the installed SDK and NDK.
+	export ANDROID_HOME=<path to the Android SDK>
+	export ANDROID_NDK_HOME=<path to the Android NDK>
+
+and add android_ndk_repository() and android_sdk_repository() rules into the WORKSPACE file as the following:
+
+
+	$ echo "android_sdk_repository(name = \"androidsdk\")" >> WORKSPACE
+	$ echo "android_ndk_repository(name = \"androidndk\", api_level=21)" >> WORKSPACE
+In order to use Framework on earlier Android versions, MediaPipe needs to switch to a lower Android API level. You can achieve this by specifying api_level = $YOUR_INTENDED_API_LEVEL in android_ndk_repository() and/or android_sdk_repository() in the WORKSPACE file.
+
+1. To build an Android example app, build against the corresponding android_binary build target. For instance, for MediaPipe Hands the target is handtrackinggpu in the BUILD file:
+
+	bazel build -c opt --config=android_arm64 mediapipe/examples/android/src/java/com/google/mediapipe/apps/handtrackinggpu:handtrackinggpu
+
+2. Install it on a device with:
+	adb install bazel-bin/mediapipe/examples/android/src/java/com/google/mediapipe/apps/handtrackinggpu/handtrackinggpu.apk

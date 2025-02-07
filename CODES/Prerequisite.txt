@@ -1,0 +1,103 @@
+Prework:
+
+Install Homebrew.
+Install Xcode and its Command Line Tools by xcode-select --install.
+Install Bazelisk.
+
+Follow the official Bazel documentation to install Bazelisk.
+
+Checkout MediaPipe repository.
+
+
+$ git clone --depth 1 https://github.com/google/mediapipe.git
+
+$ cd mediapipe
+Install OpenCV and FFmpeg.
+
+Option 1. Use HomeBrew package manager tool to install the pre-compiled OpenCV 3 libraries. FFmpeg will be installed via OpenCV.
+
+
+$ brew install opencv@3
+
+# There is a known issue caused by the glog dependency. Uninstall glog.
+$ brew uninstall --ignore-dependencies glog
+Option 2. Use MacPorts package manager tool to install the OpenCV libraries.
+
+
+$ port install opencv
+Note: when using MacPorts, please edit the WORKSPACE, opencv_macos.BUILD, and ffmpeg_macos.BUILD files like the following:
+
+new_local_repository(
+    name = "macos_opencv",
+    build_file = "@//third_party:opencv_macos.BUILD",
+    path = "/opt",
+)
+
+new_local_repository(
+    name = "macos_ffmpeg",
+    build_file = "@//third_party:ffmpeg_macos.BUILD",
+    path = "/opt",
+)
+
+cc_library(
+    name = "opencv",
+    srcs = glob(
+        [
+            "local/lib/libopencv_core.dylib",
+            "local/lib/libopencv_highgui.dylib",
+            "local/lib/libopencv_imgcodecs.dylib",
+            "local/lib/libopencv_imgproc.dylib",
+            "local/lib/libopencv_video.dylib",
+            "local/lib/libopencv_videoio.dylib",
+        ],
+    ),
+    hdrs = glob(["local/include/opencv2/**/*.h*"]),
+    includes = ["local/include/"],
+    linkstatic = 1,
+    visibility = ["//visibility:public"],
+)
+
+cc_library(
+    name = "libffmpeg",
+    srcs = glob(
+        [
+            "local/lib/libav*.dylib",
+        ],
+    ),
+    hdrs = glob(["local/include/libav*/*.h"]),
+    includes = ["local/include/"],
+    linkopts = [
+        "-lavcodec",
+        "-lavformat",
+        "-lavutil",
+    ],
+    linkstatic = 1,
+    visibility = ["//visibility:public"],
+)
+Make sure that Python 3 and the Python "six" library are installed.
+
+
+$ brew install python
+$ sudo ln -s -f /usr/local/bin/python3.7 /usr/local/bin/python
+$ python --version
+Python 3.7.4
+$ pip3 install --user six
+Run the Hello World! in C++ example.
+
+
+$ export GLOG_logtostderr=1
+# Need bazel flag 'MEDIAPIPE_DISABLE_GPU=1' as desktop GPU is currently not supported
+$ bazel run --define MEDIAPIPE_DISABLE_GPU=1 \
+    mediapipe/examples/desktop/hello_world:hello_world
+
+# Should print:
+# Hello World!
+# Hello World!
+# Hello World!
+# Hello World!
+# Hello World!
+# Hello World!
+# Hello World!
+# Hello World!
+# Hello World!
+# Hello World!

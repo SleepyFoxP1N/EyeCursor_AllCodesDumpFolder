@@ -1,0 +1,6 @@
+To install Android Studio on your Mac, follow these steps:
+
+Launch the Android Studio DMG file.
+Drag and drop Android Studio into the Applications folder, then launch Android Studio.
+Choose whether to import previous Android Studio settings, then click OK.
+Complete the Android Studio Setup Wizard, which includes downloading the Android SDK components that are required for development.

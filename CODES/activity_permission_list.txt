@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background">
+
+    <TextView
+        android:id="@+id/conditions"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:text="Conditions"
+        android:textColor="@color/black"
+        android:layout_marginTop="80dp"
+        android:textSize="35sp"
+        android:textStyle="bold"
+        tools:ignore="HardcodedText,MissingConstraints" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="350dp"
+        android:layout_height="450dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="155dp">
+
+        <CheckBox
+            android:id="@+id/AcceptenduserButton"
+            android:layout_width="335dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="7dp"
+            android:layout_marginTop="30dp"
+            android:background="#E4E5E6"
+            android:gravity="start|center_vertical"
+            android:text="@string/Permission_user_license"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            app:backgroundTint="@null"
+            tools:ignore="MissingConstraints,RtlHardcoded,TextSizeCheck,VisualLintButtonSize" />
+
+        <CheckBox
+            android:id="@+id/requestOverlayPermissionButton"
+            android:layout_width="335dp"
+            android:layout_height="112dp"
+            android:layout_marginStart="7dp"
+            android:layout_marginTop="105dp"
+            android:background="#E4E5E6"
+            android:text="@string/Permission_display_txt"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:gravity="start|center_vertical"
+            app:backgroundTint="@null"
+            tools:ignore="MissingConstraints,TextSizeCheck,VisualLintButtonSize" />
+
+        <CheckBox
+            android:id="@+id/requestCameraPermissionButton"
+            android:layout_width="335dp"
+            android:layout_height="211dp"
+            android:layout_marginStart="7dp"
+            android:layout_marginTop="233dp"
+            android:background="#E4E5E6"
+            android:gravity="start|center_vertical"
+            android:text="@string/permission_camera_txt"
+            android:textColor="@color/black"
+            android:textSize="21sp"
+            app:backgroundTint="@null"
+            tools:ignore="MissingConstraints,TextSizeCheck,VisualLintButtonSize" />
+
+    </androidx.cardview.widget.CardView>
+
+    <Button
+        android:id="@+id/nextpermission_btn"
+        android:layout_width="120dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="248dp"
+        android:layout_marginTop="630dp"
+        android:background="@drawable/save_button"
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:textColor="@color/green"
+        app:backgroundTint="@null"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        tools:ignore="HardcodedText,TextSizeCheck,TouchTargetSizeCheck,TextContrastCheck" />
+</RelativeLayout>

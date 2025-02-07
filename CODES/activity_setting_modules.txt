@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/background">
+    <androidx.cardview.widget.CardView
+        app:cardCornerRadius="30dp"
+        app:cardElevation="0dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@drawable/background"
+        android:id="@+id/mainLayout">
+        <Button
+            android:id="@+id/settingsbackbutton"
+            android:layout_width="50dp"
+            android:layout_height="73dp"
+            android:background="@drawable/transparentbutton"
+            android:text="←"
+            android:textColor="@color/black"
+            android:textSize="55sp"
+            android:textStyle="bold"
+            tools:ignore="HardcodedText,TextSizeCheck"/>
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Settings"
+            android:textColor="@color/black"
+            android:textSize="44sp"
+            android:textStyle="bold"
+            tools:ignore="HardcodedText,TextSizeCheck"
+            android:textAlignment="center"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:padding="10dp"
+            android:layout_weight="1">
+            <Button
+                android:id="@+id/pointerspeedbutton"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/transparent_button"
+                android:text=" Cursor Speed"
+                android:textAllCaps="false"
+                android:textColor="@color/blue"
+                android:textSize="17sp"
+                android:textStyle="bold"
+                tools:ignore="HardcodedText,TextSizeCheck"
+                android:layout_weight="1" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="s"
+                android:alpha="0"
+                android:textColor="@color/black"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                tools:ignore="HardcodedText,TextSizeCheck" />
+
+            <Button
+                android:id="@+id/pointersmoothingbutton"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/transparent_button"
+                android:text="Cursor Smoothing"
+                android:textAllCaps="false"
+                android:textColor="@color/blue"
+                android:textSize="17sp"
+                android:textStyle="bold"
+                tools:ignore="HardcodedText,TextSizeCheck"
+                android:layout_weight="1"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:padding="10dp"
+            android:layout_weight="1"
+            android:gravity="center">
+        <Button
+            android:id="@+id/pointersizebutton"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/transparent_button"
+            android:text="Cursor Size"
+            android:textAllCaps="false"
+            android:textColor="@color/blue"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            tools:ignore="HardcodedText"
+            android:layout_weight="1" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="s"
+                android:alpha="0"
+                android:textColor="@color/black"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                tools:ignore="HardcodedText,TextSizeCheck" />
+
+        <Button
+            android:id="@+id/pointerthresholdbutton"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/transparent_button"
+            android:text="Cursor Threshold"
+            android:textAllCaps="false"
+            android:textColor="@color/blue"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            tools:ignore="HardcodedText,TextSizeCheck"
+            android:layout_weight="1" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:padding="10dp"
+            android:layout_weight="1"
+            android:gravity="center">
+        <Button
+            android:id="@+id/pointeraccelerationbutton"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/transparent_button"
+            android:text=" Cursor Acceleration "
+            android:textAllCaps="false"
+            android:textColor="@color/blue"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            tools:ignore="HardcodedText,TextSizeCheck"
+            android:layout_weight="1" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="s"
+                android:alpha="0"
+                android:textColor="@color/black"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                tools:ignore="HardcodedText,TextSizeCheck" />
+
+        <Button
+            android:id="@+id/pointerdwelltimebutton"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/transparent_button"
+            android:text=" Cursor Dwell Time "
+            android:textAllCaps="false"
+            android:textColor="@color/blue"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            tools:ignore="HardcodedText,TextSizeCheck"
+            android:layout_weight="1" />
+        </LinearLayout>
+    </LinearLayout>
+    </androidx.cardview.widget.CardView>
+</RelativeLayout>

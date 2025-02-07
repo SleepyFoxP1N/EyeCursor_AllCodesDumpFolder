@@ -1,0 +1,2 @@
+rootProject.name = "EyeCursor-Project"
+include ':EyeCursor'
