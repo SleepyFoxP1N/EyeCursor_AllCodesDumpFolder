@@ -100,6 +100,47 @@ Attempt 1.4: Use bazel 6.0.0
 - [ ] Compiled successfully with the same one warning, YES! Printed “Hello World”!!!!!
 - [ ] Rsources: Python 3.7.16 —— pip 22.3.1 —— bazel 5.2.0 —— “bash setup_android_sdk_and_ndk.sh” —— opencv@3 —— do export GLOG_logtostderr=1
 
+RECORDING OF ATTEMPTION OF MEDIAPIPE ANDROID EXMAPLE APP
+
+// THU MAR 2 2023
+
+Attempt 1.0.a: HandTracking
+- [ ] Step 1: Continuing attempt 1.4
+- [ ] failed: missing input file 'external/androidsdk/platforms/android-30/android.jar'
+- [ ] Step 2: Chaging jdk and ndk from the setup to android studio.
+- [ ] SUCCESS COMPILATION!!~~
+
+Attempt 1.0.b:
+- [ ] Step 1: Continuation of attempt 1.0.a
+- [ ] zsh: command not found: adb
+- [ ] Step 2: exporting android_home and android_ndk_home (Same output)
+- [ ] Step 3: Add ADB
+- [ ] adb: no devices/emulators found
+- [ ] Step 4: Connect your device
+
+Attempt 1.0.b: EyeTracking
+- [ ] Step 1: Continuation of attempt 1.0.b
+- [ ] ERROR: (No space left on device)
+- [ ] Performing Streamed Install —— Success
+
+Trying to run the solutions of Mediapipe to use
+
+Fri Mar 3 2023
+
+Attempt 1.0.b.0: Following this https://google.github.io/mediapipe/getting_started/android_solutions.html
+Step 1: Import mediapipe/examples/android/solutions directory into Android Studio.
+ERROR: Cannot create mockable android.jar /Users/jhroyedzon/Library/Android/sdk/platforms/android-30/android.jar
+Step 2: Changing the project structure> sdk verion to API 29: ANDROID 10.0
+SUCCESS in building the gradle
+
+Attempt 1.0.b.1: Run in android
+Step 1: Continue of attempt 1.0.b.0
+ERROR: NDK at /Users/jhroyedzon/Library/Android/sdk/ndk/21.4.7075529 did not have a source.properties file
+Step 2: NDK was not set up properly… now with NDK 21.4.7075529
+ERROR: Still the same
+Step 3: Putting all the resource of 21.4.7075529/android-ndk-r21e to 21.4.7075529 folder
+SUCCESS building the app
+ 
 
 
 
