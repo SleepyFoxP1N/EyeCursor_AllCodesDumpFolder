@@ -1,5 +1,3 @@
-Below is a restructured version of your instructions formatted as a README.md file:
-
 ---
 
 # MediaPipe Setup Instructions
